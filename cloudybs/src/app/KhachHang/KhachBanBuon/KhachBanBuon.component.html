@@ -1,0 +1,302 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cấp Nhật Thông Tin Khách Hàng</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="updateGoodModal" class="col">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput type="text" placeholder="Tên Khách Hàng" name="name" [(ngModel)]="name">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput type="text" placeholder="Địa Chỉ" name="address" [(ngModel)]="address">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput type="text" placeholder="Số Điện Thoại" name="phone" [(ngModel)]="phone">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <mat-form-field>
+                                        <mat-select name="type" [(ngModel)]="type" placeholder="Phân Loại Khách Hàng">
+                                            <mat-option *ngFor="let customerType of customerTypes" [value]="customerType.value">
+                                                {{ customerType.viewValue }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput type="number" placeholder="Ưu Đãi Giảm Giá Đơn Hàng" name="reduction" [(ngModel)]="reduction">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col">
+                            <button *ngIf="name" type="button" class="btn btn-danger" (click)="onUpdateButtonClick()" id="updateGoodButton">Cập Nhật</button>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card ">
+                    <div class="card-body ">
+                        <ul class="nav nav-pills nav-pills-danger" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist">
+                                    Danh Sách Khách Hàng
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#link2" role="tablist">
+                                    Chi Tiết Khách Hàng
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#link3" role="tablist" (click)="onResetNewCustomer()">
+                                    Tạo Khách Hàng Mới
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content tab-space">
+                            <div class="tab-pane active" id="link1">
+
+                                <div class="material-datatables">
+                                    <table id="danhSachKhachHang" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%" >
+
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="link2">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-sm-4 text-right">
+                                                <h4>Tên Khách Hàng:</h4>
+                                            </div>
+                                            <div class="col-sm-8 text-left">
+                                                <h4>{{cName}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 text-right">
+                                                <h4>SĐT:</h4>
+                                            </div>
+                                            <div class="col-sm-8 text-left">
+                                                <h4>{{cPhone}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 text-right">
+                                                <h4>Địa Chỉ:</h4>
+                                            </div>
+                                            <div class="col-sm-8 text-left">
+                                                <h4>{{cAddress}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 text-right">
+                                                <h4>Phân Loại:</h4>
+                                            </div>
+                                            <div class="col-sm-8 text-left">
+                                                <h4>{{cType}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4 text-right">
+                                                <h4>Ưu Đãi Giảm Giá Đơn Hàng:</h4>
+                                            </div>
+                                            <div class="col-sm-8 text-left">
+                                                <h4>{{cReduction}}%</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col text-right">
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Cập Nhật</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="alert alert-success" data-notify="container">
+                                            <div class="row">
+                                                <h4 class="col-sm-6 text-right">Tổng Tiền Hàng Đã Lấy:</h4>
+                                                <div class="col-sm-3 text-right">
+                                                    <h4>{{cBought}} VNĐ</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <h4 class="col-sm-6 text-right">Đã Thanh Toán:</h4>
+                                                <div class="col-sm-3 text-right">
+                                                    <h4>{{cPaid}} VNĐ</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <h4 class="col-sm-6 text-right">Giá Trị Đơn Hàng Trung Bình:</h4>
+                                                <div class="col-sm-3 text-right">
+                                                    <h4>{{cAvgPaid}} VNĐ</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <h4 class="col-sm-6 text-right">Giá Trị Đơn Hàng Gần Nhất:</h4>
+                                                <div class="col-sm-3 text-right">
+                                                    <h4>{{cLastBought}} VNĐ</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <h4 class="col-sm-6 text-right">Lần Thanh Toán Gần Nhất:</h4>
+                                                <div class="col-sm-3 text-right">
+                                                    <h4>{{cLastPaid}} VNĐ</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <h4 class="col-sm-6 text-right">Đang Nợ:</h4>
+                                                <div class="col-sm-3 text-right">
+                                                    <h4>{{cOwe}} VNĐ</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 ml-auto mr-auto">
+                                                <div class="toolbar">
+                                                    <h3 class="text-danger">Lịch Sử Mua Hàng</h3>
+                                                </div>
+                                                <div class="material-datatables">
+                                                    <table id="lichsumuahang" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>{{ dataTable.headerRow[0] }}</th>
+                                                            <th>{{ dataTable.headerRow[1] }}</th>
+                                                            <th>{{ dataTable.headerRow[2] }}</th>
+                                                            <th>{{ dataTable.headerRow[3] }}</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tfoot>
+                                                        <tr>
+                                                            <th>{{ dataTable.footerRow[0] }}</th>
+                                                            <th>{{ dataTable.footerRow[1] }}</th>
+                                                            <th>{{ dataTable.footerRow[2] }}</th>
+                                                            <th>{{ dataTable.footerRow[3] }}</th>
+                                                        </tr>
+                                                        </tfoot>
+                                                        <tbody>
+                                                        <tr *ngFor="let row of dataTable.dataRows">
+                                                            <td>{{row[0]}}</td>
+                                                            <td>{{row[1]}}</td>
+                                                            <td>{{row[2]}}</td>
+                                                            <td>{{row[3]}}</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="tab-pane" id="link3">
+                                <div class="col-sm-12">
+                                    <div class="card ">
+                                        <div class="card-body ">
+                                            <form class="form-horizontal">
+                                                <div class="row">
+                                                    <label class="col-lg-2 col-sm-12 col-form-label" style="color: black;">Tên Khách Hàng:</label>
+                                                    <div class=" col-lg-8 col-sm-12">
+                                                        <mat-form-field class="example-full-width">
+                                                            <input matInput type="text" name="name" [(ngModel)]="name">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class=" col-lg-2 col-sm-12 col-form-label" style="color: black;"> Địa Chỉ:</label>
+                                                    <div class=" col-lg-8 col-sm-12">
+                                                        <mat-form-field class="example-full-width">
+                                                            <input matInput type="text" name="address" [(ngModel)]="address">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class=" col-lg-2 col-sm-12 col-form-label" style="color: black;">SĐT:</label>
+                                                    <div class=" col-lg-8 col-sm-12">
+                                                        <mat-form-field class="example-full-width">
+                                                            <input matInput type="text" name="phone" [(ngModel)]="phone">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class=" col-lg-2 col-sm-12 col-form-label" style="color: black;">Nợ Cũ:</label>
+                                                    <div class=" col-lg-3 col-sm-12">
+                                                        <mat-form-field class="example-full-width has-danger">
+                                                            <input matInput type="text" name="owe" [(ngModel)]="owe" (keyup)="onOweChange()">
+                                                            <span class="form-control-feedback">
+                                                                    VNĐ
+                                                                </span>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class=" col-lg-2 col-sm-12 col-form-label" style="color: black;">Phân Loại Khách Hàng:</label>
+                                                    <div class="col-lg-3 col-sm-12">
+                                                        <mat-form-field>
+                                                            <mat-select name="type" [(ngModel)]="type" style="color: red;">
+                                                                <mat-option *ngFor="let customerType of customerTypes" [value]="customerType.value">
+                                                                    {{ customerType.viewValue }}
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="card-footer ">
+                                            <div class="row ml-auto">
+                                                <div class="col-md-9 ">
+                                                    <button mat-raised-button type="submit" class="btn btn-fill btn-rose" (click)="onAddNewCustomer()">Tạo Mới</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

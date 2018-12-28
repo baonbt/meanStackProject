@@ -1,0 +1,338 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div>
+                    <div class="card card-chart">
+                        <div class="card-body">
+                            <div class="row">
+                                <button mat-raised-button class="btn btn-danger btn-round btn-lg">
+                                    <i class="material-icons">assignment_returned</i> Tạo Hóa Đơn Mới
+                                </button>
+                                <div class="dropdown">
+                                    <button mat-raised-button href="#pablo" class="dropdown-toggle btn btn-primary btn-round btn-block btn-lg" data-toggle="dropdown">Hóa Đơn Chưa Làm Xong
+                                        <b class="caret"></b>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-left">
+                                        <li class="dropdown-header">Dropdown header</li>
+                                        <li>
+                                            <a href="#pablo">Action</a>
+                                        </li>
+                                        <li>
+                                            <a href="#pablo">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="#pablo">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="#pablo">Separated link</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="#pablo">One more separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col card">
+                    <mat-tab-group [selectedIndex]="selected.value"
+                                   (selectedIndexChange)="selected.setValue($event)">
+                        <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+
+                            <div class="col-sm-12 ml-auto mr-auto">
+                                <div class="card card-chart">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="row">
+                                                    <label class="col-sm-2 col-form-label">SĐT:</label>
+                                                    <div class="col-sm-9">
+                                                        <mat-form-field class="example-full-width has-danger">
+                                                            <input matInput type="text" placeholder="Số Điện Thoại Khách Hàng">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2 col-form-label">Khách Hàng:</label>
+                                                    <div class="col-sm-9">
+                                                        <mat-form-field class="example-full-width has-danger">
+                                                            <input matInput type="text" placeholder="Tên Khách Hàng">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <div class="alert alert-success" data-notify="container">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="alert" data-notify="container">
+                                                                <div class="row">
+                                                                    <label class="col-sm-4 col-form-label" style="color: black;"> TIỀN HÀNG:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <mat-form-field class="example-full-width has-success">
+                                                                            <input matInput type="text" disabled [ngModel]="tab">
+                                                                            <span class="form-control-feedback">
+                                                                                VND
+                                                                            </span>
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label class="col-sm-4 col-form-label" style="color: black;"> NỢ CŨ:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <mat-form-field class="example-full-width has-success">
+                                                                            <input matInput type="text" disabled>
+                                                                            <span class="form-control-feedback">
+                                                                                VND
+                                                                            </span>
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label class="col-sm-4 col-form-label" style="color: red;"> KHÁCH TRẢ:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <mat-form-field class="example-full-width has-success">
+                                                                            <input matInput type="text">
+                                                                            <span class="form-control-feedback">
+                                                                                VND
+                                                                            </span>
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <label class="col-sm-4 col-form-label" style="color: black;"> CÒN LẠI:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <mat-form-field class="example-full-width has-success">
+                                                                            <input matInput type="text" disabled>
+                                                                            <span class="form-control-feedback" >
+                                                                                VND
+                                                                            </span>
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="alert" data-notify="container">
+                                                                <div class="row">
+                                                                    <label class="col-sm-4 col-form-label" style="color: black;"> GHI ĐƠN:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <mat-form-field>
+                                                                            <mat-select placeholder="Single City" name="city">
+                                                                                <mat-option *ngFor="let city of cities" [value]="city.value">
+                                                                                    {{ city.viewValue }}
+                                                                                </mat-option>
+                                                                            </mat-select>
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label class="col-sm-4 col-form-label" style="color: black;"> XẾP HÀNG:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <mat-form-field>
+                                                                            <mat-select placeholder="Single City" name="city">
+                                                                                <mat-option *ngFor="let city of cities" [value]="city.value">
+                                                                                    {{ city.viewValue }}
+                                                                                </mat-option>
+                                                                            </mat-select>
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label class="col-sm-4 col-form-label" style="color: red;"> SHIP HÀNG:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <mat-form-field>
+                                                                            <mat-select multiple placeholder="Multiple Cities" [(ngModel)]="currentCity" name="Paris" ariaLabel="cities[0]">
+                                                                                <mat-option *ngFor="let city of cities" [value]="city.value">
+                                                                                    {{ city.viewValue }}
+                                                                                </mat-option>
+                                                                            </mat-select>
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <label class="col-sm-4 col-form-label" style="color: black;"> SỬA CHỮA:</label>
+                                                                    <div class="col-sm-7">
+                                                                        <mat-form-field>
+                                                                            <mat-select multiple placeholder="Multiple Cities" [(ngModel)]="currentCity" name="Paris" ariaLabel="cities[0]">
+                                                                                <mat-option *ngFor="let city of cities" [value]="city.value">
+                                                                                    {{ city.viewValue }}
+                                                                                </mat-option>
+                                                                            </mat-select>
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-footer text-right">
+                                                        <div class="col-12">
+                                                            <button mat-raised-button type="submit" class="btn btn-primary " >Xóa Hóa Đơn</button>
+                                                            <button mat-raised-button type="submit" class="btn btn-warning  " >Lưu Hóa Đơn</button>
+                                                            <button mat-raised-button type="submit" class="btn btn-rose  " >Hoàn Thành</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card col-sm-6">
+                                                <div class="row">
+                                                    <p class="col-sm-3 col-form-label mat-body-strong">Mã Hàng Hóa</p>
+                                                    <div class="col-sm-6">
+                                                        <mat-form-field class="example-full-width">
+                                                            <input matInput type="text">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <button mat-raised-button class="btn btn-info btn-round">
+                                                        <i class="material-icons">search</i>Tìm Kiếm
+                                                    </button>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="alert alert-primary" data-notify="container">
+                                                            <div class="row">
+                                                                <h4 class="col-sm-3 text-right">Tên Hàng Hóa:</h4>
+                                                                <div class="col-sm-9">
+                                                                    <h4>FUTURE</h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="alert alert-inverse" data-notify="container">
+                                                                        <div class="row">
+                                                                            <h4 class="col-sm-4 text-right">Giá Bán:</h4>
+                                                                            <div class="col-sm-8">
+                                                                                <h4>10,000,000 VNĐ</h4>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <h5 class="col-sm-4 text-right">ĐVT:</h5>
+                                                                            <div class="col-sm-8">
+                                                                                <h4>Chiếc</h4>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row ml-auto mr-auto">
+                                                                            <div class="col-sm-12 card">
+                                                                                <mat-form-field class="example-full-width has-danger">
+                                                                                    <input matInput type="text" placeholder="Số Lượng">
+                                                                                    <span class="form-control-feedback">
+                                                                                    </span>
+                                                                                </mat-form-field>
+
+                                                                                <div class="form-check">
+                                                                                    <label class="form-check-label" style="color: black;">
+                                                                                        <input class="form-check-input" type="checkbox" value="" > Mua Về
+                                                                                        <span class="form-check-sign">
+                                                                                            <span class="check"></span>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div data-notify="container">
+                                                                        <img src="./assets/img/image_placeholder.jpg" style="max-width:90%;max-height:220px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="card-footer text-right">
+                                                    <div class="form-check mr-auto">
+                                                    </div>
+                                                    <button mat-raised-button type="submit" class="btn btn-warning" >Nhập Lại</button>
+                                                    <button mat-raised-button type="submit" class="btn btn-danger" >Thêm Vào Hóa Đơn</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="card col-sm-11 ml-auto mr-auto">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center">{{ tableData2.headerRow[0] }}</th>
+                                                    <th>{{ tableData2.headerRow[1] }}</th>
+                                                    <th>{{ tableData2.headerRow[2] }}</th>
+                                                    <th>{{ tableData2.headerRow[3] }}</th>
+                                                    <th>{{ tableData2.headerRow[4] }}</th>
+                                                    <th class="text-right">{{ tableData2.headerRow[5] }}</th>
+                                                    <th class="text-right">{{ tableData2.headerRow[6] }}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr *ngFor="let row of tableData2.dataRows">
+                                                    <td class="text-center">{{row.id}}</td>
+                                                    <td>
+                                                        <div [ngSwitch]="row.ischecked">
+                                                            <div *ngSwitchCase="true">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input class="form-check-input" type="checkbox" value="" checked>
+                                                                        <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                  </span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div *ngSwitchDefault>
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input class="form-check-input" type="checkbox" value="">
+                                                                        <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                  </span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{row.product_name}}</td>
+                                                    <td>{{row.type}}</td>
+                                                    <td>{{row.quantity}}</td>
+                                                    <td class="text-right">€{{ row.price }}</td>
+                                                    <td class="text-right">
+                                                        &euro; {{row.amount}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5"></td>
+                                                    <td class="td-total">
+                                                        Total
+                                                    </td>
+                                                    <td class="td-price">
+                                                        <small>&euro;</small>12,999
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+</div>

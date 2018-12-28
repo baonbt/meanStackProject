@@ -1,0 +1,1 @@
+npm rebuild node-sass --force //update version node binding
